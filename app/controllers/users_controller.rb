@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params)
-    redirect '/'
+    @user = User.new(params)
+    if @user.save
+      redirect '/books'
+    else
+      redirect '/'
+    end
   end
 end
