@@ -217,9 +217,36 @@ describe ApplicationController do
         expect(page.has_unchecked_field?(@author2.id)).to eq(true)
       end
 
-      it "'/owners/new' form has a field for creating a new pet" do
-        visit '/owners/new'
-        expect(page).to have_field('pet[name]')
+      it "'/books/new' form has a field for creating a new author" do
+        visit '/books/new'
+        expect(page).to have_field('author[name]')
+      end
+
+      it "'/books/new' creates a new book and associates an existing author " do
+       @author1 = Author.create(:name => "Rowling")
+       @author2 = Author.create(:name => "Tolkien")
+       visit '/books/new'
+       fill_in "book[title]", :with => "HP"
+       fill_in "book[summary]", :with => "Boy with a scar"
+       check(@author1.id)
+       click_button "Create Book"
+       @book = Book.last
+       expect(@book.title).to eq("HP")
+       expect(@book.authors.first.name).to eq("Rowling")
+      end
+
+      it "'/books/new' creates a new book and a new author" do
+        @author1 = Author.create(:name => "Rowling")
+        @author2 = Author.create(:name => "Tolkien")
+        visit '/books/new'
+        fill_in "book[title]", :with => "of Mice and Men"
+        fill_in "book[summary]", :with => "About larry and George"
+        fill_in "author[name]", :with => "Steinbeck"
+        click_button "Create Book"
+        @book = Book.last
+        @author = Author.last
+        expect(@book.title).to eq("of Mice and Men")
+        expect(@book.authors.first.name).to eq("Steinbeck")
       end
 
       it 'lets user create a book if they are logged in' do
@@ -232,7 +259,9 @@ describe ApplicationController do
         click_button 'submit'
 
         visit '/books/new'
+        @author1 = Author.create(:name => "Rowling")
         fill_in(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school")
+        check(@author1.id)
         click_button 'submit'
 
         user = User.find_by(:name => "becky567")
