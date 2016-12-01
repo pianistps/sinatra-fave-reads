@@ -148,8 +148,10 @@ describe ApplicationController do
   describe 'user show page' do
     it 'shows all a single users books' do
       user = User.create(:name => "becky567", :email => "starz@aol.com", :password => "kittens")
-      book1 = Book.create(:title => "Lord of The Rings", :summary => "A book about battle of Middle Earth", :user_id => user.id)
-      book2 = Book.create(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school", :user_id => user.id)
+      author1 = Author.create(:name => "Tolkien")
+      book1 = Book.create(:title => "Lord of The Rings", :summary => "A book about battle of Middle Earth", :user_id => user.id, :author_id => author1.id)
+      author2 = Author.create(:name => "JK Rowling")
+      book2 = Book.create(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school", :user_id => user.id, :author_id => author2.id)
       get "/users/#{user.slug}"
 
       expect(last_response.body).to include("Lord of The Rings")
@@ -162,10 +164,12 @@ describe ApplicationController do
     context 'logged in' do
       it 'lets a user view the books index if logged in' do
         user1 = User.create(:name => "becky567", :email => "starz@aol.com", :password => "kittens")
-        book1 = Book.create(:title => "Lord of The Rings", :summary => "A book about battle of Middle Earth", :user_id => user1.id)
+        author1 = Author.create(:name => "Tolkien")
+        book1 = Book.create(:title => "Lord of The Rings", :summary => "A book about battle of Middle Earth", :user_id => user1.id, :author_id => author1.id)
 
         user2 = User.create(:name => "silverstallion", :email => "silver@aol.com", :password => "horses")
-        book2 = Book.create(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school", :user_id => user2.id)
+        author1 = Author.create(:name => "JK Rowling")
+        book2 = Book.create(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school", :user_id => user2.id, :author_id => author1.id)
 
         visit '/login'
 
@@ -173,8 +177,8 @@ describe ApplicationController do
         fill_in(:password, :with => "kittens")
         click_button 'submit'
         visit "/books"
-        expect(page.body).to include(book1.summary)
-        expect(page.body).to include(book2.summary)
+        expect(page.body).to include(book1.author_id.name)
+        expect(page.body).to include(book2.author_id.name)
       end
     end
 
