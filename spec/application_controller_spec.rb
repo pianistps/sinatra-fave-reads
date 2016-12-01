@@ -209,6 +209,14 @@ describe ApplicationController do
 
       end
 
+      it "'/books/new' form has a checkbox for existing authors" do
+        @author1 = Author.create(:name => "Bessie")
+        @author2 = Author.create(:name => "Sadie")
+        visit '/books/new'
+        expect(page.has_unchecked_field?(@author1.id)).to eq(true)
+        expect(page.has_unchecked_field?(@author2.id)).to eq(true)
+      end
+
       it 'lets user create a book if they are logged in' do
         user = User.create(:name => "becky567", :email => "starz@aol.com", :password => "kittens")
 
