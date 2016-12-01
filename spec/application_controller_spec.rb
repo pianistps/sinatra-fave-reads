@@ -217,6 +217,11 @@ describe ApplicationController do
         expect(page.has_unchecked_field?(@author2.id)).to eq(true)
       end
 
+      it "'/owners/new' form has a field for creating a new pet" do
+        visit '/owners/new'
+        expect(page).to have_field('pet[name]')
+      end
+
       it 'lets user create a book if they are logged in' do
         user = User.create(:name => "becky567", :email => "starz@aol.com", :password => "kittens")
 
