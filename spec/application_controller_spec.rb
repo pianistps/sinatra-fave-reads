@@ -262,7 +262,7 @@ describe ApplicationController do
         @author1 = Author.create(:name => "Rowling")
         fill_in(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school")
         check(@author1.id)
-        click_button 'submit'
+        click_button "Create Book"
 
         user = User.find_by(:name => "becky567")
         book = Book.find_by(:title => "Harry Potter & Sorcerors Stone")
@@ -283,8 +283,10 @@ describe ApplicationController do
 
         visit '/books/new'
 
+        @author1 = Author.create(:name => "Rowling")
         fill_in(:title, :with => "New Book", :summary, :with => "A new thrilling book")
-        click_button 'submit'
+        check(@author1.id)
+        click_button "Create Book"
 
         user = User.find_by(:id=> user.id)
         user2 = User.find_by(:id => user2.id)
@@ -305,8 +307,10 @@ describe ApplicationController do
 
         visit '/books/new'
 
+        @author1 = Author.create(:name => "Rowling")
         fill_in(:title, :with => "", :summary, :with => "This shouldn't work without title")
-        click_button 'submit'
+        check(@author1.id)
+        click_button 'Create Book'
 
         expect(Book.find_by(:title => "")).to eq(nil)
         expect(page.current_path).to eq("/books/new")
@@ -324,8 +328,10 @@ describe ApplicationController do
 
         visit '/books/new'
 
+        @author1 = Author.create(:name => "Rowling")
         fill_in(:title, :with => "Title without summary", :summary, :with => "")
-        click_button 'submit'
+        check(@author1.id)
+        click_button 'Create Book'
 
         expect(Book.find_by(:summary => "")).to eq(nil)
         expect(page.current_path).to eq("/books/new")
