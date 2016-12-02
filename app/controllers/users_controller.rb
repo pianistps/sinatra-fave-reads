@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect '/books'
     else
-      redirect '/'
+      redirect '/signup'
     end
   end
 end
