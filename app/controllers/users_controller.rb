@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
+    #add feature of flash message if dont have field filled out
     @user = User.new(params)
     if @user.save
       session[:user_id] = @user.id
@@ -21,6 +22,6 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-
+    erb :login
   end
 end
