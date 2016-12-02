@@ -3,9 +3,11 @@ require './config/environment'
 class UsersController < ApplicationController
 
   get '/signup' do
-
-    erb :'/users/new'
-    
+    if is_logged_in?
+      redirect '/books'
+    else
+      erb :'/users/new'
+    end
   end
 
   post '/signup' do
@@ -15,5 +17,9 @@ class UsersController < ApplicationController
     else
       redirect '/signup'
     end
+  end
+
+  get '/login' do
+    
   end
 end
