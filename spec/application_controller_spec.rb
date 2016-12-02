@@ -284,7 +284,8 @@ describe ApplicationController do
         visit '/books/new'
 
         @author1 = Author.create(:name => "Rowling")
-        fill_in(:title, :with => "New Book", :summary, :with => "A new thrilling book")
+        fill_in(:title, :with => "New Book")
+        fill_in(:summary, :with => "A new thrilling book")
         check(@author1.id)
         click_button "Create Book"
 
@@ -308,7 +309,8 @@ describe ApplicationController do
         visit '/books/new'
 
         @author1 = Author.create(:name => "Rowling")
-        fill_in(:title, :with => "", :summary, :with => "This shouldn't work without title")
+        fill_in(:title, :with => "")
+        fill_in(:summary, :with => "This shouldn't work without title")
         check(@author1.id)
         click_button 'Create Book'
 
@@ -329,7 +331,8 @@ describe ApplicationController do
         visit '/books/new'
 
         @author1 = Author.create(:name => "Rowling")
-        fill_in(:title, :with => "Title without summary", :summary, :with => "")
+        fill_in(:title, :with => "Title without summary")
+        fill_in(:summary, :with => "")
         check(@author1.id)
         click_button 'Create Book'
 
@@ -436,7 +439,7 @@ describe ApplicationController do
 
       it 'does not let a user edit a book with blank title' do
         user = User.create(:name => "becky567", :email => "starz@aol.com", :password => "kittens")
-        book = Book.create(::title => "Harry Potter", :summary => "about a boy with a scar", :user_id => 1)
+        book = Book.create(:title => "Harry Potter", :summary => "about a boy with a scar", :user_id => 1)
         visit '/login'
 
         fill_in(:email, :with => "starz@aol.com")
@@ -454,7 +457,7 @@ describe ApplicationController do
 
       it 'does not let a user edit a book with blank summary' do
         user = User.create(:name => "becky567", :email => "starz@aol.com", :password => "kittens")
-        book = Book.create(::title => "Harry Potter", :summary => "about a boy with a scar", :user_id => 1)
+        book = Book.create(:title => "Harry Potter", :summary => "about a boy with a scar", :user_id => 1)
         visit '/login'
 
         fill_in(:email, :with => "starz@aol.com")
