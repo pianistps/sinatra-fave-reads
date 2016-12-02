@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   post '/signup' do
     @user = User.new(params)
     if @user.save
+      session[:user_id] = @user.id
       redirect '/books'
     else
       redirect '/signup'
@@ -20,6 +21,6 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    
+
   end
 end
