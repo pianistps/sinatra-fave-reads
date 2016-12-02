@@ -1,3 +1,5 @@
+require './config/environment'
+
 class UsersController < ApplicationController
 
   get '/signup' do
