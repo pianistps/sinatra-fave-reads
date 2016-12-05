@@ -3,7 +3,11 @@ require './config/environment'
 class BooksController < ApplicationController
 
   get '/books' do
-    erb :'/books/index'
+    if is_logged_in?
+      erb :'/books/index'
+    else
+      redirect '/'
+    end
   end
 
 end
