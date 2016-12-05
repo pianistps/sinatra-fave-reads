@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/books'
     else
-      redirect '/signup'
+      erb :'/users/new'
     end
   end
 
