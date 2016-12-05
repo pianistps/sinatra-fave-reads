@@ -3,7 +3,7 @@ require './config/environment'
 class BooksController < ApplicationController
 
   get '/books' do
-    "hello"
+    erb :'/books/index'
   end
-  
+
 end
