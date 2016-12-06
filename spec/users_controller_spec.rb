@@ -30,7 +30,7 @@ describe UsersController do
         :password => "rainbows"
       }
       post '/signup', params
-      expect(last_response.location).to include('/signup')
+      expect(last_response.status).to eq(200)
     end
 
     it 'does not let a user sign up without an email' do
@@ -40,7 +40,7 @@ describe UsersController do
         :password => "rainbows"
       }
       post '/signup', params
-      expect(last_response.location).to include('/signup')
+      expect(last_response.status).to eq(200)
     end
 
     it 'does not let a user sign up without a password' do
@@ -50,7 +50,7 @@ describe UsersController do
         :password => ""
       }
       post '/signup', params
-      expect(last_response.location).to include('/signup')
+      expect(last_response.status).to eq(200)
     end
 
     it 'does not let a logged in user view the signup page' do
