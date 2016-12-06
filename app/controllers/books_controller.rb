@@ -11,4 +11,8 @@ class BooksController < ApplicationController
     end
   end
 
+  get '/books/new' do
+    erb :'/books/new'
+  end
+
 end
