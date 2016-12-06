@@ -2,7 +2,6 @@
 <h3> Sign up for an account </h3><br></br>
 
 <% if @user && @user.errors%>
-  <%binding.pry%>
   <%@user.errors.full_messages.each do |error|%>
     <h4>Error! <%=error%>! </h4><br></br>
   <%end%>
