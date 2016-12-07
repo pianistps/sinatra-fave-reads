@@ -162,18 +162,13 @@ describe UsersController do
         author1 = Author.create(:name => "Tolkien")
         book1 = Book.create(:title => "Lord of The Rings", :summary => "A book about battle of Middle Earth", :user_id => user1.id, :author_id => author1.id)
 
-        user2 = User.create(:name => "silverstallion", :email => "silver@aol.com", :password => "horses")
-        author1 = Author.create(:name => "JK Rowling")
-        book2 = Book.create(:title => "Harry Potter & Sorcerors Stone", :summary => "A magical kid goes to wizarding school", :user_id => user2.id, :author_id => author1.id)
-
         visit '/login'
 
         fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
         visit "/books"
-        expect(page.body).to include(book1.author_id.name)
-        expect(page.body).to include(book2.author_id.name)
+        expect(page.body).to include(book1.author.name)
       end
     end
 
