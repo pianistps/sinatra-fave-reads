@@ -22,4 +22,11 @@ class BooksController < ApplicationController
     end
   end
 
+  post '/books' do
+    @book = Book.create(params)
+    @book.user_id = current_user.id
+    @book.save
+    redirect '/books'
+  end
+
 end
