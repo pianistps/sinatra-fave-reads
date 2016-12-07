@@ -3,7 +3,7 @@
 
 <p>Here are your current books:</p>
 <%@user.books.each do |book|%>
-  <%book.title%>
+  <%=book.title%><br>
 <%end%>
 
 <p><a href="/books/new">Add a book</a></p>
