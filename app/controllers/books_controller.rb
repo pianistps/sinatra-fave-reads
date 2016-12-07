@@ -37,7 +37,24 @@ class BooksController < ApplicationController
   get '/books/:id' do
     if is_logged_in?
       @book = Book.find_by_id(params[:id])
-      erb :'books/show'
+      if @book.user_id == current_user.id
+        erb :'books/show'
+      else
+        redirect '/books'
+      end
+    else
+      redirect '/'
+    end
+  end
+
+  get '/books/:id/edit' do
+    if is_logged_in?
+      @book = Book.find_by_id(params[:id])
+      if @book.user_id == current_user.id
+        erb :'/tweets/edit'
+      else
+        redirect '/books'
+      end
     else
       redirect '/'
     end
