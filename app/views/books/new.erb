@@ -5,11 +5,14 @@
   <label>Summary:</label>
   <input type="text" name="summary" id="summary">
   <br></br>
+
   <p>Add Author</p>
   <%@user.authors.each do |author|%>
-    <input type= "checkbox" name="author" id="<%=author.name%>" value="<%=author.id%>">Author.name
+    <input type= "checkbox" name="author" id="<%=author.id%>" value="<%=author.id%>"><%=author.name%>
   <%end%>
   <p>or create new Author</p>
+  <label>Name: </label>
+  <input type="text" name="author[name]" id="author_name"></input><br>
 
   <input type="submit" id="submit" value="Create Book">
 </form>
