@@ -3,7 +3,7 @@
 
 <p>Here are your current books:</p>
 <%@user.books.each do |book|%>
-  <%=book.title%><br>
+  <a href="/books/<%=book.id%>"><%=book.title%></a><br>
   <%=book.author.name%><br>
 <%end%>
 
