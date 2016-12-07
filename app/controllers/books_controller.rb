@@ -23,10 +23,24 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = Book.create(params)
+    @book = Book.new(title: params[:title], summary: params[:summary])
     @book.user_id = current_user.id
-    @book.save
-    redirect '/books'
+    @author = Author.create(name: params[:author][:name])
+    @book.author_id = @author.id
+    if @book.save
+      redirect '/books'
+    else
+      redirect '/books/new'
+    end
+  end
+
+  get '/books/:id' do
+    if is_logged_in?
+      @book = Book.find_by_id(params[:id])
+      erb :'books/show'
+    else
+      redirect '/'
+    end
   end
 
 end
