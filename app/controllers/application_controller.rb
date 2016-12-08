@@ -20,7 +20,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :index
+    if is_logged_in?
+      redirect '/books'
+    else
+      erb :index
+    end
   end
 
 end
