@@ -3,3 +3,8 @@
 <br></br>
 <h4>Summary: </h4>
 <%=@book.summary%>
+
+<form method="post" action="/books/<%=@book.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Book">
+</form>
