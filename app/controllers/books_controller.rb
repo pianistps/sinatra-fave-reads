@@ -50,6 +50,7 @@ class BooksController < ApplicationController
   get '/books/:id/edit' do
     if is_logged_in?
       @book = Book.find_by_id(params[:id])
+      @user = User.find_by_id(current_user.id)
       if @book.user_id == current_user.id
         erb :'/tweets/edit'
       else
