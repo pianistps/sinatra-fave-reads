@@ -4,7 +4,7 @@
 <p>Here are your current books:</p>
 <%@user.books.each do |book|%>
   <a href="/books/<%=book.id%>"><%=book.title%></a><br>
-  <%=book.author.name%><br>
+  <a href="/authors/<%=book.author_id%>"><%=book.author.name%></a><br>
 <%end%>
 
 <p><a href="/books/new">Add a book</a></p>
