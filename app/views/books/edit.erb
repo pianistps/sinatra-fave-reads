@@ -1,0 +1,20 @@
+<h3>Edit Book</h3>
+<form action="/books/<%=@book.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <label>Title: </label>
+  <input type="text" name="title" id="title" value="<%=@book.title%>">
+  <label>Summary:</label>
+  <input type="text" name="summary" id="summary" value="<%=@book.summary%>">
+  <br></br>
+
+  <p>Select Author</p>
+  <%@user.authors.each do |author|%>
+    <input type= "checkbox" name="author" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
+  <%end%>
+
+  <p>or create new Author</p>
+  <label>Name: </label>
+  <input type="text" name="author[name]" id="author_name"></input><br>
+
+  <input type="submit" id="submit" value="Edit Book">
+</form>
