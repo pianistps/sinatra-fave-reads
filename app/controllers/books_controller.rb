@@ -52,7 +52,7 @@ class BooksController < ApplicationController
       @book = Book.find_by_id(params[:id])
       @user = User.find_by_id(current_user.id)
       if @book.user_id == current_user.id
-        erb :'/tweets/edit'
+        erb :'/books/edit'
       else
         redirect '/books'
       end
