@@ -61,4 +61,14 @@ class BooksController < ApplicationController
     end
   end
 
+  patch '/books/:id' do
+    @book = Book.find_by_id(params[:id])
+    @user = User.find_by_id(current_user.id)
+  end
+
+  # delete '/books/:id/delete' do
+  #   @book = Book.find_by_id(params[:id])
+  #   @tweet.delete
+  #   redirect '/books'
+  # end
 end

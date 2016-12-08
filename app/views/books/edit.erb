@@ -9,7 +9,7 @@
 
   <p>Select Author</p>
   <%@user.authors.each do |author|%>
-    <input type= "checkbox" name="author" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
+    <input type= "checkbox" name="author[name]" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
   <%end%>
 
   <p>or create new Author</p>
