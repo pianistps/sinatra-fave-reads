@@ -66,9 +66,17 @@ class BooksController < ApplicationController
     @user = User.find_by_id(current_user.id)
   end
 
-  # delete '/books/:id/delete' do
-  #   @book = Book.find_by_id(params[:id])
-  #   @tweet.delete
-  #   redirect '/books'
-  # end
+  post '/books/:id/delete' do
+    @book = Book.find_by_id(params[:id])
+    if is_logged_in?
+      if current_user.books.include?(@book)
+      @book.delete
+      redirect '/books'
+      else
+        redirect '/books'
+      end
+    else
+      redirect '/'
+    end
+  end
 end
