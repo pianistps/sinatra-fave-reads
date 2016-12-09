@@ -1,8 +1,14 @@
-<h4>Title: </h4>
-<%=@book.title%>
+
+<b><%=@book.title%></b>
+<br>
+<em>by: </em>
+<%author = @book.author_id%>
+<%=Author.find_by_id(author).name%>
+
 <br></br>
 <h4>Summary: </h4>
 <%=@book.summary%>
+<br></br>
 
 <form method="post" action="/books/<%=@book.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
