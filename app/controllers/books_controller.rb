@@ -25,7 +25,8 @@ class BooksController < ApplicationController
   post '/books' do
     @book = Book.new(title: params[:title], summary: params[:summary])
     @book.user_id = current_user.id
-    @author = Author.create(name: params[:author][:name])
+    # @author = Author.create(name: params[:author][:name])
+    @author = Author.find_or_create_by(name: params[:author][:name])
     @book.author_id = @author.id
     if @book.save
       redirect '/books'
