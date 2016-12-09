@@ -11,6 +11,10 @@ class AuthorsController < ApplicationController
   end
 
   get '/authors/:id' do
-    @author = Author.find_by_id(params[:id])
+    if is_logged_in?
+      @author = Author.find_by_id(params[:id])
+      erb :'/authors/show'
+    end
   end
+
 end
