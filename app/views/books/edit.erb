@@ -7,14 +7,13 @@
   <input type="text" name="summary" id="summary" value="<%=@book.summary%>">
   <br></br>
 
-  <p>Select Author</p>
-  <%@user.authors.each do |author|%>
-    <input type= "checkbox" name="author[name]" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
-  <%end%>
-
-  <p>or create new Author</p>
+  <p>Select Author or create new Author</p>
   <label>Name: </label>
   <input type="text" name="author[name]" id="author_name"></input><br>
 
   <input type="submit" id="submit" value="Edit Book">
+  <%@user.authors.uniq.each do |author|%>
+    <input type= "radio" name="author[name]" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
+  <%end%>
+
 </form>
