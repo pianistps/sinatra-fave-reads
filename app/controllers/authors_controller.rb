@@ -7,6 +7,8 @@ class AuthorsController < ApplicationController
       @user = User.find_by_id(current_user.id)
       @authors = @user.authors
       erb :'/authors/index'
+    else
+      redirect '/'
     end
   end
 
@@ -14,6 +16,8 @@ class AuthorsController < ApplicationController
     if is_logged_in?
       @author = Author.find_by_id(params[:id])
       erb :'/authors/show'
+    else
+      redirect '/'
     end
   end
 
