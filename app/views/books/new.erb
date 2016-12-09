@@ -8,8 +8,9 @@
 
   <p>Add Author</p>
   <%@user.authors.each do |author|%>
-    <input type= "checkbox" name="author" id="<%=author.id%>" value="<%=author.id%>"><%=author.name%>
+    <input type= "checkbox" name="author[name]" id="<%=author.id%>" value="<%=author.id%>"><%=author.name%>
   <%end%>
+  
   <p>or create new Author</p>
   <label for="author[name]">Name: </label>
   <input type="text" name="author[name]" id="author_name"></input><br>
