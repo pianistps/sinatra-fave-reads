@@ -78,11 +78,11 @@ class BooksController < ApplicationController
   end
 
   post '/books/:id/delete' do
-    @book = Book.find_by_id(params[:id])
     if is_logged_in?
+      @book = Book.find_by_id(params[:id])
       if current_user.books.include?(@book)
-      @book.delete
-      redirect '/books'
+        @book.delete
+        redirect '/books'
       else
         redirect '/books'
       end
