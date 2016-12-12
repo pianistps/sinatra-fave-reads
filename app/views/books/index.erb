@@ -2,8 +2,8 @@
 <h3>Welcome, <%=@user.name%>!</h3>
 
 <p>Here are your current books:</p>
-<%@user.books.each do |book|%>
-  <a href="/books/<%=book.id%>"><%=book.title%></a><br>
+<%@user.books.each_with_index do |book, index|%>
+  <%=index + 1%>. <a href="/books/<%=book.id%>"><%=book.title%></a><br>
   <p>by: <a href="/authors/<%=book.author_id%>"><%=book.author.name%></a></p><br>
 <%end%>
 
