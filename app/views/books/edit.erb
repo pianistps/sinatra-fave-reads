@@ -13,7 +13,7 @@
 
   <input type="submit" id="submit" value="Edit Book">
   <%@user.authors.uniq.each do |author|%>
-    <input type= "radio" name="author[name]" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
+    <input type= "checkbox" name="author[name]" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
   <%end%>
 
 </form>
