@@ -1,5 +1,5 @@
 <h3>Current Authors</h3>
 
-<%@authors.each do |author|%>
-  -<%=author.name%>
+<%@authors.uniq.each do |author|%>
+  - <a href="/authors/<%=author.id%>"><%=author.name%></a>
 <%end%>
