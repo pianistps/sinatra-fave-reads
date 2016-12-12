@@ -63,9 +63,9 @@ class BooksController < ApplicationController
   end
 
   post '/books/:id' do
-    @book = Book.find_by_id(params[:id])
-    @user = User.find_by_id(current_user.id)
     if is_logged_in?
+      @book = Book.find_by_id(params[:id])
+      @user = User.find_by_id(current_user.id)
       if current_user.books.include?(@book)
         @book.update(title: params[:title], summary: params[:summary], author_id: params[:author][:name])
         redirect "/books/#{@book.id}"
