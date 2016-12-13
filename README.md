@@ -4,7 +4,17 @@ Project is built on Sinatra and ActiveRecord.
 
 ##Book Inventory
 
-My Sinatra project for Flatiron that is meant to work as a book inventory for its users. A user can view his or her books when signed in. Signed in users can also add books and edit them as well as delete. 
+My Sinatra project for Flatiron that is meant to work as a book inventory for its users. A user can view his or her books when signed in. Signed in users can also add books and edit them as well as delete.
+
+##Usage
+Clone this repository to your computer and run the following :
+
+```
+bundle install
+rake db:migrate
+shotgun
+```
+Then, navigate to the host in your browser.
 
 ##Contributing
 
