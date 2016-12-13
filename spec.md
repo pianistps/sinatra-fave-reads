@@ -8,7 +8,7 @@ Specs:
 - [x] Include user accounts
 - [x] Ensure that users can't modify content created by other users
 - [x] Include user input validations
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x] Display validation failures to user with error message (/users/new)
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
