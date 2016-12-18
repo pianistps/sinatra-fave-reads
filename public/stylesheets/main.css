@@ -64,6 +64,22 @@
     line-height: 12px;
   }
 
+  /*unvisited*/
+  a:link {
+    color: #197795;
+    text-decoration: none;
+  }
+
+  /*visited*/
+  a:visited {
+    color: #75adbf;
+  }
+
+  /*mouse over link*/
+  a:hover {
+    color: #515151;
+  }
+
   .main {
     overflow: hidden;
   }
