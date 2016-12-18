@@ -15,7 +15,7 @@
   body {
     background-color: #197795;
     color: #333;
-    font-family: Sans-Serif;
+    font-family: sans-serif;
     line-height: 18px;
   }
 
@@ -53,11 +53,15 @@
 
   input[type=submit] {
     padding:5px 15px;
-    background:#ccc;
+    background:#7a7a7a;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    color: white;
+    font-family: cursive;
+    font-size: 15px;
+    line-height: 12px;
   }
 
   .main {
