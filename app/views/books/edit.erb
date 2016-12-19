@@ -1,3 +1,9 @@
+<div class="colorsub">
+  <form method="GET" action="/books">
+    <input type="submit" value="Home">
+  </form><br></br>
+</div>
+
 <h3>Edit Book</h3>
 <form action="/books/<%=@book.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
@@ -7,13 +13,14 @@
   <input type="text" name="summary" id="summary" value="<%=@book.summary%>">
   <br></br>
 
-  <p>Select Author or create new Author</p>
-  <label>Name: </label>
+  <p>Select Author or create new Author:</p>
+  <label>New author name: </label>
   <input type="text" name="author[name]" id="author_name"></input><br>
 
-  <input type="submit" id="submit" value="Edit Book">
+  <label>Choose existing author:</label>
   <%@user.authors.uniq.each do |author|%>
     <input type= "checkbox" name="author[name]" id="<%=author.id%>" value="<%=author.id%>" <%='checked' if @book.author_id == author.id%>><%=author.name%>
   <%end%>
-
+  <br></br>
+  <input type="submit" id="submit" value="Edit Book">
 </form>
