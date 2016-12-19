@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :books
   has_many :authors, through: :books
-  validates :email, :name, :password_digest, presence: true
+  validates :email, :name, presence: true
+  validates :email, uniqueness: true
 
   def slug
     self.name.gsub(" ","-")

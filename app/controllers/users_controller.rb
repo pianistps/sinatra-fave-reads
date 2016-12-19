@@ -3,6 +3,7 @@ require './config/environment'
 class UsersController < ApplicationController
 
   get '/signup' do
+
     if is_logged_in?
       redirect '/books'
     else
