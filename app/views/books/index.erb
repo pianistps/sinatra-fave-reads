@@ -7,7 +7,17 @@
   <p>by: <a href="/authors/<%=book.author_id%>"><%=book.author.name%></a></p><br>
 <%end%>
 
-<a href="/authors">Authors</a>
-<p><a href="/books/new">Add a book</a></p>
+<div class="colorsub">
+  <form method="GET" action="/authors">
+    <input type="submit" value="Authors">
+  </form>
 
-<b><a href="/logout">Logout</a></b>
+  <form method="GET" action="/books/new">
+    <input type="submit" value="Add book">
+  </form>
+</div>
+
+<br></br>
+<form method="GET" action="/logout">
+  <input type="submit" value="Log-out">
+</form>
