@@ -1,4 +1,8 @@
-<a href="/books">Home</a><br></br>
+<div class="colorsub">
+  <form method="GET" action="/books">
+    <input type="submit" value="Home">
+  </form><br></br>
+</div>
 
 <b><%=@book.title%></b>
 <br>
@@ -11,9 +15,13 @@
 <%=@book.summary%>
 <br></br>
 
-<a href="/books/<%=@book.id%>/edit">Edit the book</a>
-
-<form method="post" action="/books/<%=@book.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Book">
+<form method="GET" action="/books/<%=@book.id%>/edit">
+  <input type="submit" value="Edit Book">
 </form>
+
+<div class="red">
+  <form method="post" action="/books/<%=@book.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Book">
+  </form>
+</div>
