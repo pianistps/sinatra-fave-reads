@@ -51,6 +51,10 @@
     margin-bottom: 18px;
   }
 
+  .index input[type=submit] {
+    background: #5e9fb4;
+  }
+
   input[type=submit] {
     padding:5px 15px;
     background:#7a7a7a;
