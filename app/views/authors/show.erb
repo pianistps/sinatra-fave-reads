@@ -1,4 +1,6 @@
-<a href="/books">Home</a><br></br>
+<form method="GET" action="/books">
+  <input type="submit" value="Home">
+</form><br></br>
 
 <h3>Books by: <%=@author.name%></h3>
 <%@author.books.each_with_index do |book, index|%>
