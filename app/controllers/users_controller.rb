@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    #add feature of flash message if dont have field filled out
     @user = User.new(params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:message] = "Successfully created account!"
       redirect '/books'
     else
       erb :'/users/new'
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if is_logged_in?
       session.clear
+      flash[:message] = "Successfully logged out!"
       redirect '/login'
     else
       redirect '/'

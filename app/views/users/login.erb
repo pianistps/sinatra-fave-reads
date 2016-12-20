@@ -3,6 +3,11 @@
 </form>
 <br></br>
 
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+<br></br>
+
 <h3> Log-in </h3><br></br>
 
 <form action="/login" method="post">
