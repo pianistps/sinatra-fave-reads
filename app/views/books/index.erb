@@ -1,5 +1,10 @@
 <br></br>
-<h3>Welcome, <%=@user.name%>!</h3>
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %>, <%=@user.name%>!</h3>
+  <%else%>
+    <h3>Welcome, <%=@user.name%>!</h3>
+<% end %>
+<br></br>
 
 <p>Here are your current books:</p>
 <%@user.books.each_with_index do |book, index|%>

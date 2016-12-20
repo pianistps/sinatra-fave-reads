@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -23,6 +24,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     if is_logged_in?
+      flash[:message] = "You are already logged in"
       redirect '/books'
     else
       erb :index
