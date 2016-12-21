@@ -16,6 +16,11 @@
 <body>
   <div class="wrapper">
       <div style="text-align: center;"><img src="/images/bookbig.png"></div>
+      <div class="flashmssg">
+        <% if flash.has?(:message) %>
+          <%= flash[:message] %>
+        <% end %> <br>
+      </div>
       <%= yield %>
 
     <footer class="branding">
