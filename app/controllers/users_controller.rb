@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:message] = "Successfully created account!"
+      flash[:message] = "Successfully created account!" #working
       redirect '/books'
     else
       erb :'/users/new'
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if is_logged_in?
       session.clear
-      flash[:message] = "Successfully logged out!"
+      flash[:message] = "Successfully logged out!" #NOT WORKING
       redirect '/login'
     else
       redirect '/'

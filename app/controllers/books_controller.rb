@@ -29,6 +29,7 @@ class BooksController < ApplicationController
     @author = Author.find_or_create_by(name: params[:author][:name])
     @book.author_id = @author.id
     if @book.save
+      flash[:message] = "Successfully created book!" #works
       redirect '/books'
     else
       redirect '/books/new'
@@ -68,6 +69,7 @@ class BooksController < ApplicationController
       @user = User.find_by_id(current_user.id)
       if current_user.books.include?(@book)
         @book.update(title: params[:title], summary: params[:summary], author_id: params[:author][:name])
+        flash[:message] = "Successfully edited book!" #works
         redirect "/books/#{@book.id}"
       else
         redirect '/books'
@@ -82,6 +84,7 @@ class BooksController < ApplicationController
       @book = Book.find_by_id(params[:id])
       if current_user.books.include?(@book)
         @book.delete
+        flash[:message] = "Successfully deleted book!" #working
         redirect '/books'
       else
         redirect '/books'

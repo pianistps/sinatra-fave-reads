@@ -4,6 +4,11 @@
   </form><br></br>
 </div>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+<br>
+
 <b><%=@book.title%></b>
 <br>
 <em>by: </em>

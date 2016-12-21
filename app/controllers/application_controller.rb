@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "secret"
-    use Rack::Flash
+    use Rack::Flash, :sweep => true
   end
 
   helpers do
@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     if is_logged_in?
-      flash[:message] = "You are already logged in"
+      flash[:message] = "You are already logged in" #working
       redirect '/books'
     else
       erb :index
