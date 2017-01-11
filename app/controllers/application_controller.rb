@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def current_user
-      @current_user ||= User.find_by_id(session[:user_id])
+      @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id] != nil
       # db.conn.exec("SELECT * FROM users WHERE id = ?", session[:user_id])
     end
 
