@@ -17,6 +17,7 @@
   <input type="text" name="author[name]" id="author_name"></input><br>
 
   <label for="author[name]">Choose existing author:</label>
+  
   <%@user.authors.uniq.each do |author|%>
     <input type= "radio" name="author[name]" id="<%=author.id%>" value="<%=author.name%>"><%=author.name%>
   <%end%>

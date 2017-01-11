@@ -13,6 +13,7 @@ class BooksController < ApplicationController
 
   get '/books/new' do
     if is_logged_in?
+      @user = User.find_by_id(current_user.id)
         erb :'/books/new'
     else
       redirect '/'
